@@ -109,17 +109,18 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<!-- Pregunta 4 -->	
 		<p>De esta lista, ¿cuál es el juego que más te gusta?</p>
 		<div>
-  <select name="Juego_Favorito" id="cars" style="text-align: center;">
-    <optgroup label="Swedish Cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="Rasta">Hola</option>
-    </optgroup>
-    <optgroup label="German Cars">
-      <option value="mercedes">Mercedes</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </optgroup>
+  <select name="Juego_Favorito" id="JFavorito" style="text-align: center;">
+
+  	<option disabled selected value>Pícale acá</option>
+      <option value="Catán">Catán</option>
+      <option value="Carcassone">Carcassone</option>
+      <option value="Azul">Azul</option>
+      <option value="Splendor">Splendor</option>
+      <option value="Century">Century: la ruta de las especias</option>
+      <option value="King">King of Tokio/King of New York</option>
+      <option value="Fantasma">Fantasma blitz</option>
+      <option value="Sushi">Sushi go</option>
+      <option value="Código">Código secreto</option>
   </select>
 		</div>
 
@@ -140,9 +141,10 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<ol id="sortable">
    		<li id="task_1" class="ui-state-default">Juegos de Rol</li>
-    	<li id="task_2" class="ui-state-default">Estrategia</li>
-   	 	<li id="task_3" class="ui-state-default">Deck Builder</li>
-    	<li id="task_4" class="ui-state-default">War Games</li>
+    	<li id="task_2" class="ui-state-default">Party games o juegos familiares</li>
+   	 	<li id="task_3" class="ui-state-default">Deck Builder/TCG</li>
+    	<li id="task_4" class="ui-state-default">War Games o juegos de miniaturas</li>
+    	<li id="task_5" class="ui-state-default">Juegos largos y con temática</li>
   		</ol>
   <input type="hidden" name="position" id="position" />
 		</div>
@@ -154,18 +156,24 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 				Juegos de Rol
 			</label>
 			<label for="check2">
-				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check2" value="Deck">
-				Deck Builder
+				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check2" value="Party">
+				Party games o juegos familiares
 			</label>
 			<label for="check3">
-				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check3" value="War">
-				War Games
+				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check3" value="Deck">
+				Deck Builder/TCG 
 			</label>		
 			<label for="check4">
-				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check4" value="Estrategia">
-				Estrategia
-			</label>	
+				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check4" value="War">
+				War Games o juegos de miniaturas
+			</label>
+			<label for="check5">
+				<input class="single-checkbox" type="checkbox" name="game_suggest" id="check5" value="Long">
+				Juegos largos y con temática
+			</label>
+
 		</div>
+
 		<!-- Pregunta 7 -->
 		<p>¿Con qué descipción te identificas más?</p>
 		<div class="group">
@@ -173,11 +181,13 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<ol id="sortable2">
-   		<li id="task_5" class="ui-state-default">	Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 Descripción 1 </li>
-    	<li id="task_6" class="ui-state-default">Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 Descripción 2 </li>
-   	 	<li id="task_7" class="ui-state-default">War Shalalalalalasfqwfqiuwe fghbnqwgfeqwgfiuwqhgf9i8uiw qgfhiu9qwugh98qgwr</li>
-    	<li id="task_8" class="ui-state-default">UGAUGAUGAUGAUGAUGAUGAUGAUGAU GAUGAUGAUGAUGAUGAU GAUGAUGAUGAUGAU GAUGAUGAUGAUGAUGAUGAUG AUGAUGAUGAUGAU GAUGAUGAUGAUGAUGAU GAUGAUGAUGA UGAUGAUGAUGAUG AUGAUGAUGA UGAUGAUGAUGAUGAU GAUGAUGAUGAUGAUG AUGAUGAUGAUGAUGA</li>
+		<ol id="sortable2" style="text-align: justify">
+   		<li id="task_6" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
+    	<li id="task_7" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
+   	 	<li id="task_8" class="ui-state-default">Prefiero juegos donde se forman equipos que compiten entre sí, ya sea para realizar tareas específicas o de roles secretos. Entre más jugadores mejor.</li>
+    	<li id="task_9" class="ui-state-default">Mis juegos favoritos son juegos de tarjetas o de guerra donde se pueden utilizar miniaturas.</li>
+    	<li id="task_9" class="ui-state-default">Las decisiones son muy importantes y puede llegar a ser muy competitivo.</li>
+    	<li id="task_9" class="ui-state-default">Prefiero cualquier tipo de juego de rol donde puedo crear un personaje a mi elección y vivir muchas aventuras diferentes.</li>
   		</ol>
   <input type="hidden" name="position2" id="position2" />
 		</div>
@@ -198,36 +208,36 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<p>¿Cuáles son tus platillos favoritos de CnD?</p>
 		<div class="group">
 			<ul class="foodchecks" id="platillos_1">
-			<li><label for="check5">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check5" value="Rol" >
+			<li><label for="check6">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check6" value="Chapata con carne" >
 				Chapata con carne (pollo, atún, pierna a la cerveza)
 			</label></li>
-			<li><label for="check6">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check6" value="Deck">
+			<li><label for="check7">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check7" value="Chapata con embutido">
 				Chapata con embutido (roast beaf, jamón, pepeonni)
 			</label></li>
-			<li><label for="check7">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check7" value="War">
+			<li><label for="check8">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check8" value="Chapatas sin carne">
 				Chapatas sin carne (champiñones, quesos)
 			</label></li>		
-			<li><label for="check8">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check8" value="Estrategia">
+			<li><label for="check9">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check9" value="Chapapizza">
 				Chapapizza
 			</label></li>
-			<li><label for="check9">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check9" value="Rol">
+			<li><label for="check10">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check10" value="Hamburguesa">
 				Hamburguesa ogro u ogro de las cavernas
 			</label></li>
-			<li><label for="check10">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check10" value="Deck">
+			<li><label for="check11">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check11" value="Dedo de trol">
 				Dedo de trol o dedo de momia
 			</label></li>
-			<li><label for="check11">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check11" value="War">
+			<li><label for="check12">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check12" value="Papas">
 				Papas a la francesa o gajo
 			</label>	</li>	
-			<li><label for="check12">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check12" value="Estrategia">
+			<li><label for="check13">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check13" value="Pizza">
 				Pizza
 			</label></li>	
 		</ul>
@@ -253,55 +263,55 @@ $('#remove').click(function() {
 		</div>
 <p>¿Cuáles son tus bebidas favoritas de CnD?</p>
 		<div class="group">
-			<ul class="foodchecks">
-			<li><label for="check13">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check13" value="Rol">
+			<ul class="foodchecks" id="bebidas_1">
+			<li><label for="check14">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check14" value="Sodas italianas">
 				Sodas italianas (varios sabores) o bebida mineralizada (mangada, limonada, naranjada)
 			</label></li>
-			<li><label for="check14">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check14" value="Deck">
+			<li><label for="check15">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check15" value="Sangre goblin">
 				Sangre goblin (jugo de uva arándano)
 			</label></li>
-			<li><label for="check15">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check15" value="War">
+			<li><label for="check16">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check16" value="Flotantes">
 				Flotantes (varios sabores) o chamoyada
 			</label></li>		
-			<li><label for="check16">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check16" value="Estrategia">
+			<li><label for="check17">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check17" value="Malteadas">
 				Malteadas
 			</label></li>
-			<li><label for="check17">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check17" value="Rol">
+			<li><label for="check18">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check18" value="Café">
 				Café o capuchino
 			</label></li>
-			<li><label for="check18">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check18" value="Deck">
+			<li><label for="check19">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check19" value="Cervezas Arte">
 				Cervezas artesanales
 			</label></li>
-			<li><label for="check19">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check19" value="War">
+			<li><label for="check20">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check20" value="Cervezas Comer">
 				Cervezas comerciales
 			</label>	</li>	
-			<li><label for="check20">
-				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check20" value="Estrategia">
+			<li><label for="check21">
+				<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check21" value="Refrescos">
 				Refrescos (varios sabores)
 			</label></li>	
 		</ul>
 
-		<a href="#" id="add"  style="text-align: center;">Agregar</a>
+		<a href="#" id="add2"  style="text-align: center;">Agregar</a>
 
-		<a href="#" id="remove" style="text-align: center;" >Quitar</a>
+		<a href="#" id="remove2" style="text-align: center;" >Quitar</a>
 
-			<ul class="foodchecks" style="display:inline-block;" id="platillos_2">
+			<ul class="foodchecks" style="display:inline-block;" id="bebidas_2">
 			
 		</ul>
 
 		<script>
-$('#add').click(function() {
-    return !$('#platillos_1 li :checked').closest('li').appendTo('#platillos_2');
+$('#add2').click(function() {
+    return !$('#bebidas_1 li :checked').closest('li').appendTo('#bebidas_2');
 });
-$('#remove').click(function() {
-    return !$('#platillos_2 li :checked').closest('li').appendTo('#platillos_1');
+$('#remove2').click(function() {
+    return !$('#bebidas_2 li :checked').closest('li').appendTo('#bebidas_1');
 });
 
 </script>
