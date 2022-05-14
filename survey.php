@@ -42,7 +42,7 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<form class="survey-form" method="post" action="">		
+		<form class="survey-form" method="post" action=""		
 		<h1><i class="far fa-list-alt"></i>Encuesta C&D</h1>
 
 <div class="steps">
@@ -51,7 +51,7 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 	<div class="step"></div>
 	<div class="step"></div>
 	<div class="step"></div>
-	<div class="step"></div>
+	<div class="step"></div>	
 </div>
 <!-- Primera Sección -->
 
@@ -320,37 +320,37 @@ $('#remove2').click(function() {
 		<p>¿Qué te gustaría que agregáramos al menú?</p>
 		<div class="group">
 			<ul class="foodchecks">
-			<li><label for="check20">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check20" value="Rol">
-				Platillo 1
-			</label></li>
-			<li><label for="check21">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check21" value="Deck">
-				Platillo 2
-			</label></li>
 			<li><label for="check22">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check22" value="War">
-				Platillo 3
-			</label></li>		
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check22" value="Rol">
+				Más opciones de chapatas
+			</label></li>
 			<li><label for="check23">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check23" value="Estrategia">
-				Platillo 4
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check23" value="Deck">
+				Hamburguesas de pollo o club sándwich
 			</label></li>
 			<li><label for="check24">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check24" value="Rol">
-				Platillo 5
-			</label></li>
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check24" value="War">
+				Más opciones de botana (dedos de queso, aros de cebolla, etc.)
+			</label></li>		
 			<li><label for="check25">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check25" value="Deck">
-				Platillo 6
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check25" value="Estrategia">
+				Ensaladas o platillos con vegetales
 			</label></li>
 			<li><label for="check26">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check26" value="War">
-				Platillo 7
-			</label>	</li>	
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check26" value="Rol">
+				Agua/bebida del día
+			</label></li>
 			<li><label for="check27">
-				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check27" value="Estrategia">
-				Platillo 8
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check27" value="Deck">
+				Más sabores de sodas italianas
+			</label></li>
+			<li><label for="check28">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check28" value="War">
+				Más opciones de refrescos
+			</label>	</li>	
+			<li><label for="check29">
+				<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check29" value="Estrategia">
+				Más opciones de salsas y aderezos para acompañar los platillos
 			</label></li>	
 		</ul>
 		</div>
@@ -382,21 +382,28 @@ $('#remove2').click(function() {
 			<span>Me encanta, lo amo</span>
 		</div>
 <p>¿En general, ¿Qué tan satisfecho estás con los servicios que ofrece CnD?</p>
-		<div class="rating">
-			<input type="radio" name="Satisfaction" id="radio15" value="0">
-			<label for="radio15">1</label>
+		<div class="group">
+
+			<label for="radio15">
+			<input type="radio" name="Satisfaction" id="radio15" value="0" required>
+		Me gusta, pero no pasa nada si no lo visito	
+			</label>
+			<label for="radio16">
 			<input type="radio" name="Satisfaction" id="radio16" value="1">
-			<label for="radio16">2</label>
+		Me gusta mucho y prefiero jugar en el C&D
+		</label>
+		<label for="radio17">
 			<input type="radio" name="Satisfaction" id="radio17" value="2">
-			<label for="radio17">3</label>
+		Es uno de mis lugares preferidos para jugar y/o comer
+		</label>
+			<label for="radio18">
 			<input type="radio" name="Satisfaction" id="radio18" value="3">
-			<label for="radio18">4</label>
+		Es mi lugar favorito para jugar con mis amigos
+		</label>
+		<label for="radio19">
 			<input type="radio" name="Satisfaction" id="radio19" value="4">
-			<label for="radio19">5</label>
-		</div>
-<div class="rating-footer">
-			<span>Les queda mucho por hacer</span>
-			<span>Hace mi vida mejor</span>
+		Para mí, no existe mejor lugar
+		</label>
 		</div>
 <label for="comments">¿En qué podríamos mejorar?</label>
 		<div class="field">
