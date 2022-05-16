@@ -300,7 +300,7 @@ h1 i {
 .survey-form .step-content.current {
     display: block;
 }
-.survey-form .result {
+.sursvey-form .result {
     padding: 25px;
 }
 .survey-form .result h3 {
@@ -316,4 +316,4 @@ h1 i {
 ul.foodchecks li { 
     display:inline-block;
 }
-
+    

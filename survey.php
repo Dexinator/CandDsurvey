@@ -2,15 +2,54 @@
 // Output messages
 $response = '';
 // Check if the form was submitted
-if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_POST['email'], $_POST['comments'], $_POST['recommend'])) {
+/* Pregunta 1 --> 
+Pregunta 1 --> 
+Pregunta 1 -->Tiempo_de_conocer
+Pregunta 2 -->Cómo_conociste
+Pregunta 3 -->Frequency
+Pregunta 4 -->Juego_Favorito
+Pregunta 5 -->position
+Pregunta 6 -->game_suggest
+Pregunta 7 -->position2
+Pregunta 8 -->Platillos_Preferidos
+Pregunta 9 -->Bebidas_Preferidas
+Pregunta 10 -->Platillos_Sugerencias
+Pregunta 11 -->Recommendar
+Pregunta 12 -->Satisfaction
+Pregunta 13 -->comments
+Pregunta 14 -->email
+Pregunta 15 -->Sexo
+Pregunta 16 -->Ocupación
+Pregunta 17 -->hijos
+Pregunta 18 -->CP
+Pregunta 19 -->NEstudios
+*/
+if (isset($_POST['Tiempo_de_conocer'], $_POST['Cómo_conociste'], $_POST['Frequency'], $_POST['Juego_Favorito'], $_POST['position'],
+ $_POST['game_suggest'], $_POST['position2'], $_POST['Platillos_Preferidos'], $_POST['Bebidas_Preferidas'], $_POST['Platillos_Sugerencias'], $_POST['Recommendar'], $_POST['Satisfaction'], $_POST['comments'], $_POST['email'], $_POST['Sexo'], $_POST['Ocupación'], $_POST['hijos'], $_POST['CP'], $_POST['NEstudios']))
+ {
 	// Process form data 
 	// Assign POST variables
-	$rating = $_POST['rating'];
-	$hear_about_us = $_POST['hear_about_us'];
-	$contact_pref = implode(', ', $_POST['contact_pref']);
-	$email = $_POST['email'];
+	$Tiempo_de_conocer = $_POST['Tiempo_de_conocer'];
+	$Cómo_conociste = $_POST['Cómo_conociste'];
+	$Frequency = $_POST['Frequency'];
+	$Juego_Favorito = $_POST['Juego_Favorito'];
+	$position = $_POST['position'];
+	$game_suggest = $_POST['game_suggest'];
+	$position2 = $_POST['position2'];
+	$Platillos_Preferidos = $_POST['Platillos_Preferidos'];
+	$Bebidas_Preferidas = $_POST['Bebidas_Preferidas'];
+	$Platillos_Sugerencias = $_POST['Platillos_Sugerencias'];
+	$Recommendar = $_POST['Recommendar'];
+	$Satisfaction = $_POST['Satisfaction'];
 	$comments = $_POST['comments'];
-	$recommend = $_POST['recommend'];
+	$email = $_POST['email'];
+	$Sexo = $_POST['Sexo'];
+	$Ocupación = $_POST['Ocupación'];
+	$hijos = $_POST['hijos'];
+	$CP = $_POST['CP'];
+	$NEstudios = $_POST['NEstudios'];
+
+	//$contact_pref = implode(', ', $_POST['contact_pref']);
 	// Where to send the mail? It should be your email address
 	$to      = 'badillo.delgado.jorge@gmail.com';
 	// Mail from
@@ -31,19 +70,25 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		// Fail
 		$response = '<h3>Error!</h3><p>Message could not be sent! Please check your mail server settings!</a>';
 	}
-}?>
+	
+}
+	else {
+		$response = '<h3>Falla</a>';
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>Survey Form</title>
+		<title>Encuesta C&D</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<form class="survey-form" method="post" action=""		
-		<h1><i class="far fa-list-alt"></i>Encuesta C&D</h1>
+		<form class="survey-form" method="post" action="">
+		<h1> <i class="far fa-list-alt"></i>Encuesta C&D</h1>
 
 <div class="steps">
 	<div class="step current"></div>
@@ -104,7 +149,7 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 		<!-- Pregunta 3 -->	
 			<p>¿Qué tan frecuente visitas C&D?</p>
 		<div class="group">
-			<input type="range" id="Frecuencia" min="1" max="4" value="2" step="1" onChange="change();"> <span id="result" style="text-align: center;">De 2 a 3 veces al mes</span>
+			<input type="range" name="Frequency" id="Frecuencia" min="1" max="4" value="2" step="1" onChange="change();"> <span id="result" style="text-align: center;">De 2 a 3 veces al mes</span>
 		</div>	
 		<!-- Pregunta 4 -->	
 		<p>De esta lista, ¿cuál es el juego que más te gusta?</p>
@@ -202,7 +247,7 @@ if (isset($_POST['rating'], $_POST['hear_about_us'], $_POST['contact_pref'], $_P
 </div>
 
 <!-- Sección 3 -->
-
+<!-- Pregunta 8 -->
 <div class="step-content" data-step="3">
 	<div class="fields">
 		<p>¿Cuáles son tus platillos favoritos de CnD?</p>
@@ -261,6 +306,7 @@ $('#remove').click(function() {
 
 
 		</div>
+		<!-- Pregunta 9 -->
 <p>¿Cuáles son tus bebidas favoritas de CnD?</p>
 		<div class="group">
 			<ul class="foodchecks" id="bebidas_1">
@@ -317,6 +363,7 @@ $('#remove2').click(function() {
 </script>
 
 		</div>
+		<!-- Pregunta  10-->
 		<p>¿Qué te gustaría que agregáramos al menú?</p>
 		<div class="group">
 			<ul class="foodchecks">
@@ -364,6 +411,7 @@ $('#remove2').click(function() {
 <!-- Sección 4-->
 <div class="step-content" data-step="4">
 	<div class="fields">
+<!-- Pregunta  9-->
 <p>¿Qué tan probable es que recomiendes CnD a tus amigos?</p>
 		<div class="rating">
 			<input type="radio" name="Recommendar" id="radio10" value="0">
@@ -479,7 +527,7 @@ $('#remove2').click(function() {
 	</li>
 		<li><label for="CP">Código Postal
 
-		<input type="number" min="01" max="99999" required>
+		<input type="number" min="01" max="99999"  namer="CP" required>
 	</label></li>
 	</ul>
 	</div>
@@ -545,7 +593,7 @@ document.querySelectorAll("[data-set-step]").forEach(element => {
 	};
 });
 <?php if (!empty($_POST)): ?>
-setStep(4);
+setStep(6);
 <?php endif; ?>
 </script>
 
@@ -587,7 +635,7 @@ $(function() {
     }
   });
   $sortable.disableSelection();
-  $("#position").val(JSON.stringify($sortable.sortable("toArray")));
+  $("#position2").val(JSON.stringify($sortable.sortable("toArray")));
   $("#frmExample").submit(function(e) {
     e.preventDefault();
     console.log("Form Submit, position:", $("#position").val());

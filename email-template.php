@@ -13,29 +13,98 @@
 			<div style="box-sizing:border-box;padding:0 40px 20px;">
 				<table style="border-collapse:collapse;width:100%;">
 					<tbody>
+
+						<!-- 
+Pregunta 1 ->Tiempo_de_conocer
+Pregunta 2 ->Cómo_conociste
+Pregunta 3 ->Frequency
+Pregunta 4 ->Juego_Favorito
+Pregunta 5 ->position
+Pregunta 6 ->game_suggest
+Pregunta 7 ->position2
+Pregunta 8 ->Platillos_Preferidos
+Pregunta 9 ->Bebidas_Preferidas
+Pregunta 10 ->Platillos_Sugerencias
+Pregunta 11 ->Recommendar
+Pregunta 12 ->Satisfaction
+Pregunta 13 ->comments
+Pregunta 14 ->email
+Pregunta 15 ->Sexo
+Pregunta 16 ->Ocupación
+Pregunta 17 ->hijos
+Pregunta 18 ->CP
+						--> 
 						<tr>
-							<td style="padding:15px 0;text-decoration:underline;">Email,</td>
-							<td style="text-align:right;"><?=$email?></td>
+							<td style="padding:15px 0;text-decoration:underline;">Tiempo_de_conocer</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Tiempo_de_conocer, ENT_QUOTES)?></td>
 						</tr>
 						<tr>
-							<td style="padding:15px 0;text-decoration:underline;">Comments,</td>
+							<td style="padding:15px 0;text-decoration:underline;">Cómo_conociste</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Cómo_conociste, ENT_QUOTES)?></td>
+						</tr>
+						<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Frequency</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Frequency, ENT_QUOTES)?></td>
+						</tr>
+						<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Juego_Favorito</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Juego_Favorito, ENT_QUOTES)?></td>
+						</tr>
+						<tr>
+							<td style="padding:15px 0;text-decoration:underline;">position?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($position, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">game_suggest</td>
+							<td style="text-align:right;"><?=htmlspecialchars($game_suggest, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">position2</td>
+							<td style="text-align:right;"><?=htmlspecialchars($position2, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Platillos_Preferidos</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Platillos_Preferidos, ENT_QUOTES)?></td>
+						</tr>
+													<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Bebidas_Preferidas</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Bebidas_Preferidas, ENT_QUOTES)?></td>
+						</tr>
+													<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Platillos_Sugerencias</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Platillos_Sugerencias, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">Recommendar</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Recommendar, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Satisfaction, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
 							<td style="text-align:right;"><?=htmlspecialchars($comments, ENT_QUOTES)?></td>
 						</tr>
-						<tr>
-							<td style="padding:15px 0;text-decoration:underline;">How would you rate your experience with us?</td>
-							<td style="text-align:right;"><?=htmlspecialchars($rating, ENT_QUOTES)?></td>
-						</tr>
-						<tr>
-							<td style="padding:15px 0;text-decoration:underline;">Where did you hear about us?</td>
-							<td style="text-align:right;"><?=htmlspecialchars($hear_about_us, ENT_QUOTES)?></td>
-						</tr>
-						<tr>
-							<td style="padding:15px 0;text-decoration:underline;">How likely are you to recommend us?</td>
-							<td style="text-align:right;"><?=htmlspecialchars($recommend, ENT_QUOTES)?></td>
-						</tr>
-						<tr>
+												<tr>
 							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
-							<td style="text-align:right;"><?=htmlspecialchars($contact_pref, ENT_QUOTES)?></td>
+							<td style="text-align:right;"><?=email?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Sexo, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($Ocupación, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($hijos, ENT_QUOTES)?></td>
+						</tr>
+												<tr>
+							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
+							<td style="text-align:right;"><?=htmlspecialchars($CP, ENT_QUOTES)?></td>
 						</tr>
 					</tbody>
 				</table>
