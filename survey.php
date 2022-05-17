@@ -52,18 +52,18 @@ if ($_POST)
 
 
 	//$val = $val.(isSet(var1) ? "" : "Var 1 not set");
-
+	//$contact_pref = implode(', ', $_POST['contact_pref']);
 
 	$Tiempo_de_conocer = $_POST['Tiempo_de_conocer'];
 	$Como_conociste = $_POST['Como_conociste'];
 	$Frequency = $_POST['Frequency'];
 	$Juego_Favorito = $_POST['Juego_Favorito'];
 	$position = $_POST['position'];
-	$game_suggest = $_POST['game_suggest'];
+	$game_suggest = implode(', ',$_POST['game_suggest']);
 	$position2 = $_POST['position2'];
-	$Platillos_Preferidos = $_POST['Platillos_Preferidos'];
-	$Bebidas_Preferidas = $_POST['Bebidas_Preferidas'];
-	$Platillos_Sugerencias = $_POST['Platillos_Sugerencias'];
+	$Platillos_Preferidos =implode (', ',$_POST['Platillos_Preferidos']);
+	$Bebidas_Preferidas =implode (', ',$_POST['Bebidas_Preferidas']);
+	$Platillos_Sugerencias =implode (', ',$_POST['Platillos_Sugerencias']);
 	$Recommendar = $_POST['Recommendar'];
 	$Satisfaction = $_POST['Satisfaction'];
 	$comments = $_POST['comments'];
@@ -99,7 +99,7 @@ if ($_POST)
 		}
 	}
 	else{
-		$response = "<h3>$val</h3>";
+		$response = "<h3>$val</h3><p><div class='buttons'><a href='#' class='btn alt' data-set-step='5'>Anterior</a></div>";
 	}
 	
 }
@@ -227,25 +227,26 @@ else {
 				</div>
 				<!-- Pregunta 6 -->
 				<p>¿De qué tipo de juego te gustaría que hubiera más variedad?</p>
+
 				<div class="group">
 					<label for="check1">
-						<input class="single-checkbox" type="checkbox" name="game_suggest" id="check1" value="Rol">
+						<input type="checkbox" name="game_suggest[]" id="check1" value="Rol">
 						Juegos de Rol
 					</label>
 					<label for="check2">
-						<input class="single-checkbox" type="checkbox" name="game_suggest" id="check2" value="Party">
+						<input type="checkbox" name="game_suggest[]" id="check2" value="Party">
 						Party games o juegos familiares
 					</label>
 					<label for="check3">
-						<input class="single-checkbox" type="checkbox" name="game_suggest" id="check3" value="Deck">
+						<input type="checkbox" name="game_suggest[]" id="check3" value="Deck">
 						Deck Builder/TCG 
 					</label>		
 					<label for="check4">
-						<input class="single-checkbox" type="checkbox" name="game_suggest" id="check4" value="War">
+						<input type="checkbox" name="game_suggest[]" id="check4" value="War">
 						War Games o juegos de miniaturas
 					</label>
 					<label for="check5">
-						<input class="single-checkbox" type="checkbox" name="game_suggest" id="check5" value="Long">
+						<input type="checkbox" name="game_suggest[]" id="check5" value="Long">
 						Juegos largos y con temática
 					</label>
 
@@ -286,35 +287,35 @@ else {
 				<div class="group">
 					<ul class="foodchecks" id="platillos_1">
 						<li><label for="check6">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check6" value="Chapata con carne" >
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check6" value="Chapata con carne" >
 							Chapata con carne (pollo, atún, pierna a la cerveza)
 						</label></li>
 						<li><label for="check7">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check7" value="Chapata con embutido">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check7" value="Chapata con embutido">
 							Chapata con embutido (roast beaf, jamón, pepeonni)
 						</label></li>
 						<li><label for="check8">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check8" value="Chapatas sin carne">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check8" value="Chapatas sin carne">
 							Chapatas sin carne (champiñones, quesos)
 						</label></li>		
 						<li><label for="check9">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check9" value="Chapapizza">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check9" value="Chapapizza">
 							Chapapizza
 						</label></li>
 						<li><label for="check10">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check10" value="Hamburguesa">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check10" value="Hamburguesa">
 							Hamburguesa ogro u ogro de las cavernas
 						</label></li>
 						<li><label for="check11">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check11" value="Dedo de trol">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check11" value="Dedo de trol">
 							Dedo de trol o dedo de momia
 						</label></li>
 						<li><label for="check12">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check12" value="Papas">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check12" value="Papas">
 							Papas a la francesa o gajo
 						</label>	</li>	
 						<li><label for="check13">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Preferidos" id="check13" value="Pizza">
+							<input type="checkbox" name="Platillos_Preferidos[]" id="check13" value="Pizza">
 							Pizza
 						</label></li>	
 					</ul>
@@ -343,35 +344,35 @@ else {
 				<div class="group">
 					<ul class="foodchecks" id="bebidas_1">
 						<li><label for="check14">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check14" value="Sodas italianas">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check14" value="Sodas italianas" >
 							Sodas italianas (varios sabores) o bebida mineralizada (mangada, limonada, naranjada)
 						</label></li>
 						<li><label for="check15">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check15" value="Sangre goblin">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check15" value="Sangre goblin">
 							Sangre goblin (jugo de uva arándano)
 						</label></li>
 						<li><label for="check16">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check16" value="Flotantes">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check16" value="Flotantes">
 							Flotantes (varios sabores) o chamoyada
 						</label></li>		
 						<li><label for="check17">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check17" value="Malteadas">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check17" value="Malteadas">
 							Malteadas
 						</label></li>
 						<li><label for="check18">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check18" value="Café">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check18" value="Café">
 							Café o capuchino
 						</label></li>
 						<li><label for="check19">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check19" value="Cervezas Arte">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check19" value="Cervezas Arte">
 							Cervezas artesanales
 						</label></li>
 						<li><label for="check20">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check20" value="Cervezas Comer">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check20" value="Cervezas Comer">
 							Cervezas comerciales
 						</label>	</li>	
 						<li><label for="check21">
-							<input class="single-checkbox" type="checkbox" name="Bebidas_Preferidas" id="check21" value="Refrescos">
+							<input type="checkbox" name="Bebidas_Preferidas[]" id="check21" value="Refrescos">
 							Refrescos (varios sabores)
 						</label></li>	
 					</ul>
@@ -400,35 +401,35 @@ else {
 				<div class="group">
 					<ul class="foodchecks">
 						<li><label for="check22">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check22" value="Rol">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check22" value="Rol">
 							Más opciones de chapatas
 						</label></li>
 						<li><label for="check23">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check23" value="Deck">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check23" value="Deck">
 							Hamburguesas de pollo o club sándwich
 						</label></li>
 						<li><label for="check24">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check24" value="War">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check24" value="War">
 							Más opciones de botana (dedos de queso, aros de cebolla, etc.)
 						</label></li>		
 						<li><label for="check25">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check25" value="Estrategia">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check25" value="Estrategia">
 							Ensaladas o platillos con vegetales
 						</label></li>
 						<li><label for="check26">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check26" value="Rol">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check26" value="Rol">
 							Agua/bebida del día
 						</label></li>
 						<li><label for="check27">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check27" value="Deck">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check27" value="Deck">
 							Más sabores de sodas italianas
 						</label></li>
 						<li><label for="check28">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check28" value="War">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check28" value="War">
 							Más opciones de refrescos
 						</label>	</li>	
 						<li><label for="check29">
-							<input class="single-checkbox" type="checkbox" name="Platillos_Sugerencias" id="check29" value="Estrategia">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check29" value="Estrategia">
 							Más opciones de salsas y aderezos para acompañar los platillos
 						</label></li>	
 					</ul>
@@ -598,7 +599,7 @@ else {
 			
 			<div class="buttons">
 				<a href="#" class="btn alt" data-set-step="4">Anterior</a>
-				<input type="submit" class="btn" name="submit" value="Submit">
+				<input type="submit" class="btn" name="submit" value="Submit" id="checkBtn">
 			</div>
 		</div>
 	</div>
@@ -721,7 +722,41 @@ else {
 			$(this).prop('checked', false);
 		}
 	});
+</script>
+
+<script type="text/javascript">
+$$(document).ready(function () {
+    $('#checkBtn').click(function() {
+      checked = $("input[name='game_suggest[]']:checked").length;
+
+      if(!checked) {
+        alert("Selecciona al menos 1 juego");
+        return false;
+      }
+      checked = $("input[name='Platillos_Preferidos[]']:checked").length;
+
+      if(!checked) {
+        alert("Selecciona al menos 1 Platillo");
+        return false;
+      }
+      
+      checked = $("input[name='Bebidas_Preferidas[]']:checked").length;
+
+      if(!checked) {
+        alert("Selecciona al menos 1 Bebida");
+        return false;
+      }
+
+       checked = $("input[name='Platillos_Sugerencias[]']:checked").length;
+
+      if(!checked) {
+        alert("Selecciona al menos 1 Sugerencia");
+        return false;
+      }    
+    });
+});
 
 </script>
+
 </body>
 </html>
