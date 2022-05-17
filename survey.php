@@ -4,7 +4,7 @@ $response = '';
 // Check if the form was submitted
 /* 
 Pregunta 1 -->Tiempo_de_conocer
-Pregunta 2 -->Cómo_conociste
+Pregunta 2 -->Como_conociste
 Pregunta 3 -->Frequency
 Pregunta 4 -->Juego_Favorito
 Pregunta 5 -->position
@@ -18,18 +18,44 @@ Pregunta 12 -->Satisfaction
 Pregunta 13 -->comments
 Pregunta 14 -->email
 Pregunta 15 -->Sexo
-Pregunta 16 -->Ocupación
+Pregunta 16 -->Ocupacion
 Pregunta 17 -->hijos
 Pregunta 18 -->CP
 Pregunta 19 -->NEstudios
 */
+
 if ($_POST)
 {
 	// Process form data 
 	// Assign POST variables
 
+	$val = "";
+	$val = $val.(isSet($_POST['Tiempo_de_conocer']) ? "" : "Falta Tiempo_de_conocer\n");
+	$val = $val.(isSet($_POST['Como_conociste']) ? "" : "Falta Como_conociste\n");
+	$val = $val.(isSet($_POST['Frequency']) ? "" : "Falta Frequency\n");
+	$val = $val.(isSet($_POST['Juego_Favorito']) ? "" : "Falta Juego_Favorito\n");
+	$val = $val.(isSet($_POST['position']) ? "" : "Falta position\n");
+	$val = $val.(isSet($_POST['game_suggest']) ? "" : "Falta game_suggest\n");
+	$val = $val.(isSet($_POST['position2']) ? "" : "Falta position2\n");
+	$val = $val.(isSet($_POST['Platillos_Preferidos']) ? "" : "Falta Platillos_Preferidos\n");
+	$val = $val.(isSet($_POST['Bebidas_Preferidas']) ? "" : "Falta Bebidas_Preferidas\n");
+	$val = $val.(isSet($_POST['Platillos_Sugerencias']) ? "" : "Falta Platillos_Sugerencias\n");
+	$val = $val.(isSet($_POST['Recommendar']) ? "" : "Falta Recommendar\n");
+	$val = $val.(isSet($_POST['Satisfaction']) ? "" : "Falta Satisfaction\n");
+	$val = $val.(isSet($_POST['comments']) ? "" : "Falta Tiempo_de_conocer\n");
+	$val = $val.(isSet($_POST['email']) ? "" : "Falta email\n");
+	$val = $val.(isSet($_POST['Sexo']) ? "" : "Falta Sexo\n");
+	$val = $val.(isSet($_POST['Ocupacion']) ? "" : "Falta Ocupacion\n");
+	$val = $val.(isSet($_POST['hijos']) ? "" : "Falta hijos\n");
+	$val = $val.(isSet($_POST['CP']) ? "" : "Falta CP\n");
+	$val = $val.(isSet($_POST['NEstudios']) ? "" : "Falta NEstudios\n");
+
+
+	//$val = $val.(isSet(var1) ? "" : "Var 1 not set");
+
+
 	$Tiempo_de_conocer = $_POST['Tiempo_de_conocer'];
-	$Cómo_conociste = $_POST['Cómo_conociste'];
+	$Como_conociste = $_POST['Como_conociste'];
 	$Frequency = $_POST['Frequency'];
 	$Juego_Favorito = $_POST['Juego_Favorito'];
 	$position = $_POST['position'];
@@ -43,7 +69,7 @@ if ($_POST)
 	$comments = $_POST['comments'];
 	$email = $_POST['email'];
 	$Sexo = $_POST['Sexo'];
-	$Ocupación = $_POST['Ocupación'];
+	$Ocupacion = $_POST['Ocupacion'];
 	$hijos = $_POST['hijos'];
 	$CP = $_POST['CP'];
 	$NEstudios = $_POST['NEstudios'];
@@ -61,13 +87,19 @@ if ($_POST)
 	ob_start();
 	include 'email-template.php';
 	$email_template = ob_get_clean();
-	// Try to send the mail
-	if (mail($to, $subject, $email_template, $headers)) {
+	echo 'resultado'.$val;
+	if (empty($val)){
+		if (mail($to, $subject, $email_template, $headers)) {
 		// Success
-		$response = '<h3>Thank You!</h3><p>With your help, we can improve our services for all our trusted members.</p>';		
-	} else {
+			echo 'mail enviado';
+			$response = '<h3>Thank You!</h3><p>With your help, we can improve our services for all our trusted members.</p>';		
+		} else {
 		// Fail
-		$response = '<h3>Error!</h3><p>Message could not be sent! Please check your mail server settings!</a>';
+			$response = '<h3>Error!</h3><p>Message could not be sent! Please check your mail server settings!</a>';
+		}
+	}
+	else{
+		$response = "<h3>$val</h3>";
 	}
 	
 }
@@ -130,19 +162,19 @@ else {
 				<p>¿Cómo conociste CnD?</p>
 				<div class="group">
 					<label for="radio6">
-						<input type="radio" name="Cómo_conociste" id="radio6" value="Amigo" required>
+						<input type="radio" name="Como_conociste" id="radio6" value="Amigo" required>
 						Recomendación de un amigo
 					</label>
 					<label for="radio7">
-						<input type="radio" name="Cómo_conociste" id="radio7" value="Fachada">
+						<input type="radio" name="Como_conociste" id="radio7" value="Fachada">
 						Vi una sucursal y me llamó la atención
 					</label>
 					<label for="radio8">
-						<input type="radio" name="Cómo_conociste" id="radio8" value="Social Media">
+						<input type="radio" name="Como_conociste" id="radio8" value="Social Media">
 						Lo vi en redes sociales
 					</label>
 					<label for="radio9">		
-						<input type="radio" name="Cómo_conociste" value="" onclick="setRequired();" id="other">Otro 
+						<input type="radio" name="Como_conociste" value="" onclick="setRequired();" id="other">Otro 
 						<input id="inputother" type="text" name="othertext" onchange="changeradioother()">
 					</label>
 				</div>
@@ -231,8 +263,8 @@ else {
 						<li id="task_7" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
 						<li id="task_8" class="ui-state-default">Prefiero juegos donde se forman equipos que compiten entre sí, ya sea para realizar tareas específicas o de roles secretos. Entre más jugadores mejor.</li>
 						<li id="task_9" class="ui-state-default">Mis juegos favoritos son juegos de tarjetas o de guerra donde se pueden utilizar miniaturas.</li>
-						<li id="task_9" class="ui-state-default">Las decisiones son muy importantes y puede llegar a ser muy competitivo.</li>
-						<li id="task_9" class="ui-state-default">Prefiero cualquier tipo de juego de rol donde puedo crear un personaje a mi elección y vivir muchas aventuras diferentes.</li>
+						<li id="task_10" class="ui-state-default">Las decisiones son muy importantes y puede llegar a ser muy competitivo.</li>
+						<li id="task_11" class="ui-state-default">Prefiero cualquier tipo de juego de rol donde puedo crear un personaje a mi elección y vivir muchas aventuras diferentes.</li>
 					</ol>
 					<input type="hidden" name="position2" id="position2" />
 				</div>
@@ -488,30 +520,30 @@ else {
 						Mujer
 					</label>
 				</div>
-				<p>Ocupación</p>
+				<p>Ocupacion</p>
 				<div class="group" style="display:inline-block;">
 					<label for="radio22" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio22" value="TC" required >
+						<input type="radio" name="Ocupacion" id="radio22" value="TC" required >
 						Empleado de tiempo completo
 					</label>
 					<label for="radio23" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio23" value="MT">
+						<input type="radio" name="Ocupacion" id="radio23" value="MT">
 						Empleado Parcial
 					</label>	
 					<label for="radio24" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio24" value="AE">
+						<input type="radio" name="Ocupacion" id="radio24" value="AE">
 						Autoempleado
 					</label>	
 					<label for="radio25" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio25" value="ST">
+						<input type="radio" name="Ocupacion" id="radio25" value="ST">
 						Estudiante
 					</label>	
 					<label for="radio26" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio26" value="JU">
+						<input type="radio" name="Ocupacion" id="radio26" value="JU">
 						Jubilado
 					</label>	
 					<label for="radio27" style="display:inline-block;">
-						<input type="radio" name="Ocupación" id="radio27" value="DE">
+						<input type="radio" name="Ocupacion" id="radio27" value="DE">
 						Desempleado
 					</label>	
 				</div>
@@ -527,7 +559,7 @@ else {
 					</li>
 					<li><label for="CP">Código Postal
 
-						<input type="number" min="01" max="99999"  namer="CP" required>
+						<input type="number" min="01" max="99999"  name="CP" required>
 					</label></li>
 				</ul>
 			</div>
@@ -569,125 +601,127 @@ else {
 				<input type="submit" class="btn" name="submit" value="Submit">
 			</div>
 		</div>
+	</div>
 
-		<!-- page 6 -->
-		<div class="step-content" data-step="6">
-			<div class="result"><?=$response?></div>
-		</div>
+	<!-- page 6 -->
 
-
-	</form>
-
+	<div class="step-content" data-step="6">
+		<div class="result"><?=$response?></div>
+	</div>
 
 
+</form>
 
-	<script>
-		const setStep = step => {
-			document.querySelectorAll(".step-content").forEach(element => element.style.display = "none");
-			document.querySelector("[data-step='" + step + "']").style.display = "block";
-			document.querySelectorAll(".steps .step").forEach((element, index) => {
-				index < step-1 ? element.classList.add("complete") : element.classList.remove("complete");
-				index == step-1 ? element.classList.add("current") : element.classList.remove("current");
-			});
+
+
+
+<script>
+	const setStep = step => {
+		document.querySelectorAll(".step-content").forEach(element => element.style.display = "none");
+		document.querySelector("[data-step='" + step + "']").style.display = "block";
+		document.querySelectorAll(".steps .step").forEach((element, index) => {
+			index < step-1 ? element.classList.add("complete") : element.classList.remove("complete");
+			index == step-1 ? element.classList.add("current") : element.classList.remove("current");
+		});
+	};
+	document.querySelectorAll("[data-set-step]").forEach(element => {
+		element.onclick = event => {
+			event.preventDefault();
+			setStep(parseInt(element.dataset.setStep));
 		};
-		document.querySelectorAll("[data-set-step]").forEach(element => {
-			element.onclick = event => {
-				event.preventDefault();
-				setStep(parseInt(element.dataset.setStep));
-			};
-		});
-		<?php if (!empty($_POST)): ?>
-			setStep(6);
-		<?php endif; ?>
-	</script>
+	});
+	<?php if (!empty($_POST)): ?>
+		setStep(6);
+	<?php endif; ?>
+</script>
 
-	<script>
+<script>
 
-		function changeradioother(){
-			var other= document.getElementById("other");
-			other.value=document.getElementById("inputother").value;
+	function changeradioother(){
+		var other= document.getElementById("other");
+		other.value=document.getElementById("inputother").value;
+	}
+	function setRequired(){
+
+		document.getElementById("inputother").required=true;
+	}
+
+	function removeRequired(){
+		if(document.getElementById("inputother").required == true){
+			document.getElementById("inputother").required=false;
 		}
-		function setRequired(){
+	}
+</script>
 
-			document.getElementById("inputother").required=true;
+<script>
+	var result = document.getElementById("result");
+	var mine = document.getElementById("Frecuencia");
+	function change(){
+		if (mine.value==1){result.innerText = "1 vez al mes o menos";}
+		else if (mine.value==2) { result.innerText = "De 2 a 3 veces al mes";}
+		else if (mine.value==3) { result.innerText = "1 vez a la semana";}
+		else if (mine.value==4) { result.innerText = "Más de 1 vez a la semana";}
+	}
+</script>
+
+<script>
+	$(function() {
+		var $sortable = $("#sortable").sortable({
+			update: function(event, ui) {
+				var $data = $(this).sortable('toArray');
+				$("#position").val(JSON.stringify($data));
+			}
+		});
+		$sortable.disableSelection();
+		$("#position2").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#frmExample").submit(function(e) {
+			e.preventDefault();
+			console.log("Form Submit, position:", $("#position").val());
+		});
+	});
+</script>
+
+<script>
+	$(function() {
+		var $sortable = $("#sortable2").sortable({
+			update: function(event, ui) {
+				var $data = $(this).sortable('toArray');
+				$("#position2").val(JSON.stringify($data));
+			}
+		});
+		$sortable.disableSelection();
+		$("#position").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#frmExample").submit(function(e) {
+			e.preventDefault();
+			console.log("Form Submit, position2:", $("#position2").val());
+		});
+	});
+</script>
+
+
+
+<script>
+	$('input[type=checkbox]').on('change', function (e) {
+		if ($('input[name=game_suggest]:checked').length > 3) {
+			$(this).prop('checked', false);
 		}
-
-		function removeRequired(){
-			if(document.getElementById("inputother").required == true){
-				document.getElementById("inputother").required=false;
-			}
+	});
+	$('input[type=checkbox]').on('change', function (e) {
+		if ($('input[name=Platillos_Preferidos]:checked').length > 3) {
+			$(this).prop('checked', false);
 		}
-	</script>
-
-	<script>
-		var result = document.getElementById("result");
-		var mine = document.getElementById("Frecuencia");
-		function change(){
-			if (mine.value==1){result.innerText = "1 vez al mes o menos";}
-			else if (mine.value==2) { result.innerText = "De 2 a 3 veces al mes";}
-			else if (mine.value==3) { result.innerText = "1 vez a la semana";}
-			else if (mine.value==4) { result.innerText = "Más de 1 vez a la semana";}
+	});
+	$('input[type=checkbox]').on('change', function (e) {
+		if ($('input[name=Bebidas_Preferidas]:checked').length > 3) {
+			$(this).prop('checked', false);
 		}
-	</script>
+	});
+	$('input[type=checkbox]').on('change', function (e) {
+		if ($('input[name=Platillos_Sugerencias]:checked').length > 3) {
+			$(this).prop('checked', false);
+		}
+	});
 
-	<script>
-		$(function() {
-			var $sortable = $("#sortable").sortable({
-				update: function(event, ui) {
-					var $data = $(this).sortable('toArray');
-					$("#position").val(JSON.stringify($data));
-				}
-			});
-			$sortable.disableSelection();
-			$("#position2").val(JSON.stringify($sortable.sortable("toArray")));
-			$("#frmExample").submit(function(e) {
-				e.preventDefault();
-				console.log("Form Submit, position:", $("#position").val());
-			});
-		});
-	</script>
-
-	<script>
-		$(function() {
-			var $sortable = $("#sortable2").sortable({
-				update: function(event, ui) {
-					var $data = $(this).sortable('toArray');
-					$("#position2").val(JSON.stringify($data));
-				}
-			});
-			$sortable.disableSelection();
-			$("#position").val(JSON.stringify($sortable.sortable("toArray")));
-			$("#frmExample").submit(function(e) {
-				e.preventDefault();
-				console.log("Form Submit, position2:", $("#position2").val());
-			});
-		});
-	</script>
-
-
-
-	<script>
-		$('input[type=checkbox]').on('change', function (e) {
-			if ($('input[name=game_suggest]:checked').length > 3) {
-				$(this).prop('checked', false);
-			}
-		});
-		$('input[type=checkbox]').on('change', function (e) {
-			if ($('input[name=Platillos_Preferidos]:checked').length > 3) {
-				$(this).prop('checked', false);
-			}
-		});
-		$('input[type=checkbox]').on('change', function (e) {
-			if ($('input[name=Bebidas_Preferidas]:checked').length > 3) {
-				$(this).prop('checked', false);
-			}
-		});
-		$('input[type=checkbox]').on('change', function (e) {
-			if ($('input[name=Platillos_Sugerencias]:checked').length > 3) {
-				$(this).prop('checked', false);
-			}
-		});
-
-	</script>
+</script>
 </body>
 </html>
