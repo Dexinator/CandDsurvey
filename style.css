@@ -318,6 +318,7 @@ h1 i {
 
 .foodchecks input{
   margin: 0px 0px 0px 0px;
+  display:inline-block;
 }
 
 .foodchecks label{

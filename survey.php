@@ -213,17 +213,17 @@ if ($_POST)
 
 					<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+					<script src="jquery.mobile.customjquery.mobile.custom,js"></script>
+					<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-					<script src="http://code.jquery.com/jquery.min.js"></script>
-					<script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
-					<script src="jquery.ui.touch-punch.min.js"></script>
-
-					<ol id="sortable">
-						<li id="task_1" class="ui-state-default">Juegos de Rol</li>
-						<li id="task_2" class="ui-state-default">Party games o juegos familiares</li>
-						<li id="task_3" class="ui-state-default">Deck Builder/TCG</li>
-						<li id="task_4" class="ui-state-default">War Games o juegos de miniaturas</li>
-						<li id="task_5" class="ui-state-default">Juegos largos y con temática</li>
+						<ol id="sortable" class="ui-sortable collection">
+						<li id="task_1" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos de Rol</li>
+						<li id="task_2" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Party games o juegos familiares</li>
+						<li id="task_3" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Deck Builder/TCG</li>
+						<li id="task_4" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">War Games o juegos de miniaturas</li>
+						<li id="task_5" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos largos y con temática</li>
 					</ol>
 					<input type="hidden" name="position" id="position" />
 				</div>
@@ -258,9 +258,6 @@ if ($_POST)
 				<p>¿Con qué descipción te identificas más?</p>
 				<div class="group">
 
-
-					<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 					<ol id="sortable2" style="text-align: justify">
 						<li id="task_6" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
@@ -677,7 +674,7 @@ if ($_POST)
 			}
 		});
 		$sortable.disableSelection();
-		$("#position2").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#position1").val(JSON.stringify($sortable.sortable("toArray")));
 		$("#frmExample").submit(function(e) {
 			e.preventDefault();
 			console.log("Form Submit, position:", $("#position").val());
@@ -694,7 +691,7 @@ if ($_POST)
 			}
 		});
 		$sortable.disableSelection();
-		$("#position").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#position2").val(JSON.stringify($sortable.sortable("toArray")));
 		$("#frmExample").submit(function(e) {
 			e.preventDefault();
 			console.log("Form Submit, position2:", $("#position2").val());
