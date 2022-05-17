@@ -52,7 +52,7 @@ Pregunta 18 ->CP
 	<td style="text-align:right;"><?=htmlspecialchars($Juego_Favorito, ENT_QUOTES)?></td>
 </tr>
 <tr>
-	<td style="padding:15px 0;text-decoration:underline;">position?</td>
+	<td style="padding:15px 0;text-decoration:underline;">position</td>
 	<td style="text-align:right;"><?=htmlspecialchars($position, ENT_QUOTES)?></td>
 </tr>
 <tr>
@@ -66,6 +66,10 @@ Pregunta 18 ->CP
 <tr>
 	<td style="padding:15px 0;text-decoration:underline;">Platillos_Preferidos</td>
 	<td style="text-align:right;"><?=htmlspecialchars($Platillos_Preferidos, ENT_QUOTES)?></td>
+</tr>
+<tr>
+	<td style="padding:15px 0;text-decoration:underline;">position3</td>
+	<td style="text-align:right;"><?=htmlspecialchars($position3, ENT_QUOTES)?></td>
 </tr>
 <tr>
 	<td style="padding:15px 0;text-decoration:underline;">Bebidas_Preferidas</td>

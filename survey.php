@@ -38,6 +38,7 @@ if ($_POST)
 	$val = $val.(isSet($_POST['game_suggest']) ? "" : "Falta game_suggest\n");
 	$val = $val.(isSet($_POST['position2']) ? "" : "Falta position2\n");
 	$val = $val.(isSet($_POST['Platillos_Preferidos']) ? "" : "Falta Platillos_Preferidos\n");
+	$val = $val.(isSet($_POST['position3']) ? "" : "Falta position3\n");
 	$val = $val.(isSet($_POST['Bebidas_Preferidas']) ? "" : "Falta Bebidas_Preferidas\n");
 	$val = $val.(isSet($_POST['Platillos_Sugerencias']) ? "" : "Falta Platillos_Sugerencias\n");
 	$val = $val.(isSet($_POST['Recommendar']) ? "" : "Falta Recommendar\n");
@@ -51,6 +52,8 @@ if ($_POST)
 	$val = $val.(isSet($_POST['NEstudios']) ? "" : "Falta NEstudios\n");
 
 
+
+
 	//$val = $val.(isSet(var1) ? "" : "Var 1 not set");
 	//$contact_pref = implode(', ', $_POST['contact_pref']);
 
@@ -62,6 +65,7 @@ if ($_POST)
 	$game_suggest = implode(', ',$_POST['game_suggest']);
 	$position2 = $_POST['position2'];
 	$Platillos_Preferidos =implode (', ',$_POST['Platillos_Preferidos']);
+	$position3 = $_POST['position3'];
 	$Bebidas_Preferidas =implode (', ',$_POST['Bebidas_Preferidas']);
 	$Platillos_Sugerencias =implode (', ',$_POST['Platillos_Sugerencias']);
 	$Recommendar = $_POST['Recommendar'];
@@ -87,12 +91,27 @@ if ($_POST)
 	ob_start();
 	include 'email-template.php';
 	$email_template = ob_get_clean();
-	echo 'resultado'.$val;
 	if (empty($val)){
+
+
+		$messagetxt= $Tiempo_de_conocer . PHP_EOL . $Como_conociste . PHP_EOL . $Frequency . PHP_EOL . $Juego_Favorito . PHP_EOL . $position . PHP_EOL . $game_suggest . PHP_EOL . $position2 . PHP_EOL . $Platillos_Preferidos . PHP_EOL . $Bebidas_Preferidas . PHP_EOL . $Platillos_Sugerencias . PHP_EOL . $Recommendar . PHP_EOL . $Satisfaction . PHP_EOL . $comments . PHP_EOL . $email . PHP_EOL . $Sexo . PHP_EOL . $Ocupacion . PHP_EOL . $hijos . PHP_EOL . $CP . PHP_EOL . $NEstudios . PHP_EOL ;
+		$fp = fopen('data.txt', 'a');
+
+		fwrite($fp,$messagetxt);
+		fclose($fp);
+
+
+
+
+
 		if (mail($to, $subject, $email_template, $headers)) {
 		// Success
-			echo 'mail enviado';
-			$response = '<h3>Thank You!</h3><p>With your help, we can improve our services for all our trusted members.</p>';		
+			$counter = file_get_contents("counter.txt");
+			file_put_contents("counter.txt", $counter+1);
+			$counter = file_get_contents("counter.txt");
+			echo "PREMIO ID $counter";
+
+			$response = '<img src="asf.png" id="imgpremio" class="survey-form">';		
 		} else {
 		// Fail
 			$response = '<h3>Error!</h3><p>Message could not be sent! Please check your mail server settings!</a>';
@@ -109,15 +128,14 @@ if ($_POST)
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<title>Encuesta C&D</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<form class="survey-form" method="post" action="">
-		<h1> <i class="far fa-list-alt"></i>Encuesta C&D</h1>
-
+		<h1> <img src="https://scontent.fpbc2-2.fna.fbcdn.net/v/t1.6435-9/86501894_114760190101107_3217102797317079040_n.jpg?_nc_cat=110&ccb=1-6&_nc_sid=09cbfe&_nc_ohc=GucU3KQHORQAX-CACG8&_nc_ht=scontent.fpbc2-2.fna&oh=00_AT-F4uypfl1UAfEj0en_lw8roSF7eWVhevD4j9WbCyFPPg&oe=62A81207" id="imgprinc"></h1>
 		<div class="steps">
 			<div class="step current"></div>
 			<div class="step"></div>
@@ -218,7 +236,7 @@ if ($_POST)
 					<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-						<ol id="sortable" class="ui-sortable collection">
+					<ol id="sortable" class="ui-sortable collection">
 						<li id="task_1" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos de Rol</li>
 						<li id="task_2" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Party games o juegos familiares</li>
 						<li id="task_3" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Deck Builder/TCG</li>
@@ -259,7 +277,7 @@ if ($_POST)
 				<div class="group">
 
 
-					<ol id="sortable2" style="text-align: justify">
+					<ol id="sortable2" style="text-align: justify" class="ui-sortable collection">
 						<li id="task_6" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
 						<li id="task_7" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
 						<li id="task_8" class="ui-state-default">Prefiero juegos donde se forman equipos que compiten entre sí, ya sea para realizar tareas específicas o de roles secretos. Entre más jugadores mejor.</li>
@@ -286,35 +304,42 @@ if ($_POST)
 				<p>¿Cuáles son tus platillos favoritos de CnD?</p>
 				<div class="group">
 					<ul class="foodchecks" id="platillos_1">
-						<li><label for="check6">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check6">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check6" value="Chapata con carne" >
 							Chapata con carne (pollo, atún, pierna a la cerveza)
-						</label></li>
-						<li><label for="check7">
+						</label> </li>
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check7">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check7" value="Chapata con embutido">
 							Chapata con embutido (roast beaf, jamón, pepeonni)
 						</label></li>
-						<li><label for="check8">
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check8">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check8" value="Chapatas sin carne">
 							Chapatas sin carne (champiñones, quesos)
-						</label></li>		
-						<li><label for="check9">
+						</label></li>	
+						<p>	</p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check9">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check9" value="Chapapizza">
 							Chapapizza
 						</label></li>
-						<li><label for="check10">
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check10">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check10" value="Hamburguesa">
 							Hamburguesa ogro u ogro de las cavernas
 						</label></li>
-						<li><label for="check11">
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check11">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check11" value="Dedo de trol">
 							Dedo de trol o dedo de momia
 						</label></li>
-						<li><label for="check12">
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check12">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check12" value="Papas">
 							Papas a la francesa o gajo
 						</label>	</li>	
-						<li><label for="check13">
+						<p></p>
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check13">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check13" value="Pizza">
 							Pizza
 						</label></li>	
@@ -323,13 +348,17 @@ if ($_POST)
 
 					<a href="#" id="remove" style="text-align: center;" >Quitar</a>
 
-					<ul class="foodchecks" style="display:inline-block;" id="platillos_2">
-						
-					</ul>
+					<ol class="ui-sortable collection" style="display:inline-block;" id="platillos_2" style="text-align: justify">
+
+					</ol>
+					<input type="hidden" name="position3" id="position3"/>
+
 
 					<script>
 						$('#add').click(function() {
+							//$('#platillos_1 li :checked').classList.add('ui-state-default ui-sortable-handle collection-item avatar z-depth-3');
 							return !$('#platillos_1 li :checked').closest('li').appendTo('#platillos_2');
+
 						});
 						$('#remove').click(function() {
 							return !$('#platillos_2 li :checked').closest('li').appendTo('#platillos_1');
@@ -338,7 +367,11 @@ if ($_POST)
 					</script>
 
 
+					
+
 				</div>
+
+
 				<!-- Pregunta 9 -->
 				<p>¿Cuáles son tus bebidas favoritas de CnD?</p>
 				<div class="group">
@@ -346,31 +379,39 @@ if ($_POST)
 						<li><label for="check14">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check14" value="Sodas italianas" >
 							Sodas italianas (varios sabores) o bebida mineralizada (mangada, limonada, naranjada)
-						</label></li>
+						</label> </li>
+						<p></p>
+						<p></p>
 						<li><label for="check15">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check15" value="Sangre goblin">
 							Sangre goblin (jugo de uva arándano)
 						</label></li>
+						<p></p>
 						<li><label for="check16">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check16" value="Flotantes">
 							Flotantes (varios sabores) o chamoyada
-						</label></li>		
+						</label></li>
+						<p>	</p>	
 						<li><label for="check17">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check17" value="Malteadas">
 							Malteadas
 						</label></li>
+						<p></p>
 						<li><label for="check18">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check18" value="Café">
 							Café o capuchino
 						</label></li>
+						<p></p>
 						<li><label for="check19">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check19" value="Cervezas Arte">
 							Cervezas artesanales
 						</label></li>
+						<p></p>
 						<li><label for="check20">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check20" value="Cervezas Comer">
 							Cervezas comerciales
-						</label>	</li>	
+						</label>	</li>
+						<p>	</p>
 						<li><label for="check21">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check21" value="Refrescos">
 							Refrescos (varios sabores)
@@ -382,7 +423,7 @@ if ($_POST)
 					<a href="#" id="remove2" style="text-align: center;" >Quitar</a>
 
 					<ul class="foodchecks" style="display:inline-block;" id="bebidas_2">
-						
+
 					</ul>
 
 					<script>
@@ -404,40 +445,47 @@ if ($_POST)
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check22" value="Rol">
 							Más opciones de chapatas
 						</label></li>
+						<p></p>
 						<li><label for="check23">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check23" value="Deck">
 							Hamburguesas de pollo o club sándwich
 						</label></li>
+						<p></p>
 						<li><label for="check24">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check24" value="War">
 							Más opciones de botana (dedos de queso, aros de cebolla, etc.)
-						</label></li>		
+						</label></li>
+						<p>	</p>
 						<li><label for="check25">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check25" value="Estrategia">
 							Ensaladas o platillos con vegetales
 						</label></li>
+						<p></p>
 						<li><label for="check26">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check26" value="Rol">
 							Agua/bebida del día
 						</label></li>
+						<p></p>
 						<li><label for="check27">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check27" value="Deck">
 							Más sabores de sodas italianas
 						</label></li>
+						<p></p>
 						<li><label for="check28">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check28" value="War">
 							Más opciones de refrescos
 						</label>	</li>	
+						<p></p>
 						<li><label for="check29">
 							<input type="checkbox" name="Platillos_Sugerencias[]" id="check29" value="Estrategia">
 							Más opciones de salsas y aderezos para acompañar los platillos
 						</label></li>	
-					</ul>
+					</ul>																
+					<div class="buttons">
+						<a href="#" class="btn alt" data-set-step="2">Anterior</a>
+						<a href="#" class="btn" data-set-step="4">Siguiente</a>
+					</div>
 				</div>
-			</div>
-			<div class="buttons">
-				<a href="#" class="btn alt" data-set-step="2">Anterior</a>
-				<a href="#" class="btn" data-set-step="4">Siguiente</a>
 			</div>
 		</div>
 
@@ -553,9 +601,9 @@ if ($_POST)
 				<div class="CP">
 					<ul>
 						<li><label for="Hijos">¿Cuántos hijos tienes?
-							
+
 							<input type="number" id="hijos" name="hijos" min="0" max="20" rquired>
-							
+
 						</label>
 					</li>
 					<li><label for="CP">Código Postal
@@ -596,7 +644,7 @@ if ($_POST)
 					Doctorado
 				</label>	
 			</div>	
-			
+
 			<div class="buttons">
 				<a href="#" class="btn alt" data-set-step="4">Anterior</a>
 				<input type="submit" class="btn" name="submit" value="Submit" id="checkBtn">
@@ -699,26 +747,41 @@ if ($_POST)
 	});
 </script>
 
-
+<script>
+	$(function() {
+		var $sortable = $("#platillos_2").sortable({
+			update: function(event, ui) {
+				var $data = $(this).sortable('toArray');
+				$("#position3").val(JSON.stringify($data));
+			}
+		});
+		$sortable.disableSelection();
+		$("#position3").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#frmExample").submit(function(e) {
+			e.preventDefault();
+			console.log("Form Submit, position3:", $("#position3").val());
+		});
+	});
+</script>
 
 <script>
 	$('input[type=checkbox]').on('change', function (e) {
-		if ($('input[name=game_suggest]:checked').length > 3) {
+		if ($('input[name="game_suggest[]"]:checked').length > 3) {
 			$(this).prop('checked', false);
 		}
 	});
 	$('input[type=checkbox]').on('change', function (e) {
-		if ($('input[name=Platillos_Preferidos]:checked').length > 3) {
+		if ($('input[name="Platillos_Preferidos[]"]:checked').length > 3) {
 			$(this).prop('checked', false);
 		}
 	});
 	$('input[type=checkbox]').on('change', function (e) {
-		if ($('input[name=Bebidas_Preferidas]:checked').length > 3) {
+		if ($('input[name="Bebidas_Preferidas[]"]:checked').length > 3) {
 			$(this).prop('checked', false);
 		}
 	});
 	$('input[type=checkbox]').on('change', function (e) {
-		if ($('input[name=Platillos_Sugerencias]:checked').length > 3) {
+		if ($('input[name="Platillos_Sugerencias[]"]:checked').length > 3) {
 			$(this).prop('checked', false);
 		}
 	});

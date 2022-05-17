@@ -3,7 +3,7 @@ html, body, div, input, span, a, select, textarea, option, h1, h2, h3, h4, main,
     font-family: Tahoma, Geneva, sans-serif;
 }
 html {
-    background: #f8f9f9 linear-gradient(0deg, #f8f9f9 0%, #f8f9f9 80%, #51b47c 80%, #51b47c 100%) no-repeat;
+    background: #f8f9f9 linear-gradient(0deg, #f8f9f9 0%, #f8f9f9 80%, #fdd448 80%, #fdd448 100%) no-repeat;
     padding: 30px;
     height: 100%;
 }
@@ -315,15 +315,18 @@ h1 i {
 .foodchecks {
   text-align:left;
 }
-
-.foodchecks input{
-  margin: 0px 0px 0px 0px;
-  display:inline-block;
+#imgprinc{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  margin-top: 0px;
+  border-radius: 50%;
 }
 
-.foodchecks label{
-white-space: normal;
-  margin: 0px 0px 30px 0px;
-  display:inline-block;
+#imgpremio{
+  width: 100%;
+  height: auto;
+  text-align: center;
+ margin: 0;
 }
-    
