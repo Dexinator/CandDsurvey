@@ -304,42 +304,42 @@ if ($_POST)
 				<p>¿Cuáles son tus platillos favoritos de CnD?</p>
 				<div class="group">
 					<ul class="foodchecks" id="platillos_1">
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check6">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat1"><label for="check6">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check6" value="Chapata con carne" >
 							Chapata con carne (pollo, atún, pierna a la cerveza)
 						</label> </li>
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check7">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat2"><label for="check7">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check7" value="Chapata con embutido">
 							Chapata con embutido (roast beaf, jamón, pepeonni)
 						</label></li>
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check8">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat3"><label for="check8">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check8" value="Chapatas sin carne">
 							Chapatas sin carne (champiñones, quesos)
 						</label></li>	
 						<p>	</p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check9">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat4"><label for="check9">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check9" value="Chapapizza">
 							Chapapizza
 						</label></li>
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check10">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat5"><label for="check10">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check10" value="Hamburguesa">
 							Hamburguesa ogro u ogro de las cavernas
 						</label></li>
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check11">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat6"><label for="check11">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check11" value="Dedo de trol">
 							Dedo de trol o dedo de momia
 						</label></li>
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check12">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat7"><label for="check12">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check12" value="Papas">
 							Papas a la francesa o gajo
 						</label>	</li>	
 						<p></p>
-						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3"><label for="check13">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat8"><label for="check13">
 							<input type="checkbox" name="Platillos_Preferidos[]" id="check13" value="Pizza">
 							Pizza
 						</label></li>	
