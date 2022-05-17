@@ -725,7 +725,7 @@ else {
 </script>
 
 <script type="text/javascript">
-$$(document).ready(function () {
+$(document).ready(function () {
     $('#checkBtn').click(function() {
       checked = $("input[name='game_suggest[]']:checked").length;
 
