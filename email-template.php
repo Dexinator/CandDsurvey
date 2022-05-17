@@ -38,6 +38,7 @@ Pregunta 18 ->CP
 							<td style="padding:15px 0;text-decoration:underline;">Tiempo_de_conocer</td>
 							<td style="text-align:right;"><?=htmlspecialchars($Tiempo_de_conocer, ENT_QUOTES)?></td>
 						</tr>
+						<!-- 
 						<tr>
 							<td style="padding:15px 0;text-decoration:underline;">Cómo_conociste</td>
 							<td style="text-align:right;"><?=htmlspecialchars($Cómo_conociste, ENT_QUOTES)?></td>
@@ -106,6 +107,7 @@ Pregunta 18 ->CP
 							<td style="padding:15px 0;text-decoration:underline;">How would you like us to respond to you?</td>
 							<td style="text-align:right;"><?=htmlspecialchars($CP, ENT_QUOTES)?></td>
 						</tr>
+						--> 
 					</tbody>
 				</table>
 			</div>
