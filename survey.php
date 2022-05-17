@@ -103,17 +103,13 @@ if ($_POST)
 	}
 	
 }
-else {
-	$response = '<h3>Falla</h3>';
-	echo 'Acá valió madre XD';
-}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,minimum-scale=1">
+			<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<title>Encuesta C&D</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	<link rel="stylesheet" href="style.css">
@@ -214,8 +210,14 @@ else {
 				<div class="group">
 
 					<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 					<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+					<script src="http://code.jquery.com/jquery.min.js"></script>
+					<script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
+					<script src="jquery.ui.touch-punch.min.js"></script>
+
 					<ol id="sortable">
 						<li id="task_1" class="ui-state-default">Juegos de Rol</li>
 						<li id="task_2" class="ui-state-default">Party games o juegos familiares</li>
@@ -256,9 +258,10 @@ else {
 				<p>¿Con qué descipción te identificas más?</p>
 				<div class="group">
 
-					<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 					<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 					<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 					<ol id="sortable2" style="text-align: justify">
 						<li id="task_6" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
 						<li id="task_7" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
@@ -725,36 +728,36 @@ else {
 </script>
 
 <script type="text/javascript">
-$(document).ready(function () {
-    $('#checkBtn').click(function() {
-      checked = $("input[name='game_suggest[]']:checked").length;
+	$(document).ready(function () {
+		$('#checkBtn').click(function() {
+			checked = $("input[name='game_suggest[]']:checked").length;
 
-      if(!checked) {
-        alert("Selecciona al menos 1 juego");
-        return false;
-      }
-      checked = $("input[name='Platillos_Preferidos[]']:checked").length;
+			if(!checked) {
+				alert("Selecciona al menos 1 juego");
+				return false;
+			}
+			checked = $("input[name='Platillos_Preferidos[]']:checked").length;
 
-      if(!checked) {
-        alert("Selecciona al menos 1 Platillo");
-        return false;
-      }
-      
-      checked = $("input[name='Bebidas_Preferidas[]']:checked").length;
+			if(!checked) {
+				alert("Selecciona al menos 1 Platillo");
+				return false;
+			}
 
-      if(!checked) {
-        alert("Selecciona al menos 1 Bebida");
-        return false;
-      }
+			checked = $("input[name='Bebidas_Preferidas[]']:checked").length;
 
-       checked = $("input[name='Platillos_Sugerencias[]']:checked").length;
+			if(!checked) {
+				alert("Selecciona al menos 1 Bebida");
+				return false;
+			}
 
-      if(!checked) {
-        alert("Selecciona al menos 1 Sugerencia");
-        return false;
-      }    
-    });
-});
+			checked = $("input[name='Platillos_Sugerencias[]']:checked").length;
+
+			if(!checked) {
+				alert("Selecciona al menos 1 Sugerencia");
+				return false;
+			}    
+		});
+	});
 
 </script>
 
