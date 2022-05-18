@@ -37,10 +37,9 @@ if ($_POST)
 	$val = $val.(isSet($_POST['position']) ? "" : "Falta position\n");
 	$val = $val.(isSet($_POST['game_suggest']) ? "" : "Falta game_suggest\n");
 	$val = $val.(isSet($_POST['position2']) ? "" : "Falta position2\n");
-	$val = $val.(isSet($_POST['Platillos_Preferidos']) ? "" : "Falta Platillos_Preferidos\n");
 	$val = $val.(isSet($_POST['position3']) ? "" : "Falta position3\n");
-	$val = $val.(isSet($_POST['Bebidas_Preferidas']) ? "" : "Falta Bebidas_Preferidas\n");
-	$val = $val.(isSet($_POST['Platillos_Sugerencias']) ? "" : "Falta Platillos_Sugerencias\n");
+	$val = $val.(isSet($_POST['position4']) ? "" : "Falta position4\n");
+	$val = $val.(isSet($_POST['position5']) ? "" : "Falta position5\n");
 	$val = $val.(isSet($_POST['Recommendar']) ? "" : "Falta Recommendar\n");
 	$val = $val.(isSet($_POST['Satisfaction']) ? "" : "Falta Satisfaction\n");
 	$val = $val.(isSet($_POST['comments']) ? "" : "Falta Tiempo_de_conocer\n");
@@ -64,10 +63,9 @@ if ($_POST)
 	$position = $_POST['position'];
 	$game_suggest = implode(', ',$_POST['game_suggest']);
 	$position2 = $_POST['position2'];
-	$Platillos_Preferidos =implode (', ',$_POST['Platillos_Preferidos']);
 	$position3 = $_POST['position3'];
-	$Bebidas_Preferidas =implode (', ',$_POST['Bebidas_Preferidas']);
-	$Platillos_Sugerencias =implode (', ',$_POST['Platillos_Sugerencias']);
+	$position4 = $_POST['position4'];
+	$position5 = $_POST['position5'];
 	$Recommendar = $_POST['Recommendar'];
 	$Satisfaction = $_POST['Satisfaction'];
 	$comments = $_POST['comments'];
@@ -94,7 +92,7 @@ if ($_POST)
 	if (empty($val)){
 
 
-		$messagetxt= $Tiempo_de_conocer . PHP_EOL . $Como_conociste . PHP_EOL . $Frequency . PHP_EOL . $Juego_Favorito . PHP_EOL . $position . PHP_EOL . $game_suggest . PHP_EOL . $position2 . PHP_EOL . $Platillos_Preferidos . PHP_EOL . $Bebidas_Preferidas . PHP_EOL . $Platillos_Sugerencias . PHP_EOL . $Recommendar . PHP_EOL . $Satisfaction . PHP_EOL . $comments . PHP_EOL . $email . PHP_EOL . $Sexo . PHP_EOL . $Ocupacion . PHP_EOL . $hijos . PHP_EOL . $CP . PHP_EOL . $NEstudios . PHP_EOL ;
+		$messagetxt= $Tiempo_de_conocer . PHP_EOL . $Como_conociste . PHP_EOL . $Frequency . PHP_EOL . $Juego_Favorito . PHP_EOL . $position . PHP_EOL . $game_suggest . PHP_EOL . $position2 . PHP_EOL . $position3 . PHP_EOL . $position4 . PHP_EOL . $position5 . PHP_EOL . $Recommendar . PHP_EOL . $Satisfaction . PHP_EOL . $comments . PHP_EOL . $email . PHP_EOL . $Sexo . PHP_EOL . $Ocupacion . PHP_EOL . $hijos . PHP_EOL . $CP . PHP_EOL . $NEstudios . PHP_EOL ;
 		$fp = fopen('data.txt', 'a');
 
 		fwrite($fp,$messagetxt);
@@ -149,7 +147,7 @@ if ($_POST)
 		<div class="step-content current" data-step="1">
 			<div class="fields">
 				<!-- Pregunta 1 -->
-				<p>¿Cuánto tiempo has sido cliente de CnD?</p>
+				<p>¿Cuánto tiempo has sido cliente de C&D?</p>
 				<div class="group">
 					<label for="radio1">
 						<input type="radio" name="Tiempo_de_conocer" id="radio1" value="Primera Vez" required >
@@ -173,7 +171,7 @@ if ($_POST)
 					</label>	
 				</div>	
 				<!-- Pregunta 2 -->
-				<p>¿Cómo conociste CnD?</p>
+				<p>¿Cómo conociste C&D?</p>
 				<div class="group">
 					<label for="radio6">
 						<input type="radio" name="Como_conociste" id="radio6" value="Amigo" required>
@@ -195,7 +193,7 @@ if ($_POST)
 				<!-- Pregunta 3 -->	
 				<p>¿Qué tan frecuente visitas C&D?</p>
 				<div class="group">
-					<input type="range" name="Frequency" id="Frecuencia" min="1" max="4" value="2" step="1" onChange="change();"> <span id="result" style="text-align: center;">De 2 a 3 veces al mes</span>
+					<input type="range" name="Frequency" id="Frecuencia" min="1" max="4" value="2" step="1" onChange="change();" > <span id="result" style="text-align: center;">De 2 a 3 veces al mes</span>
 				</div>	
 				<!-- Pregunta 4 -->	
 				<p>De esta lista, ¿cuál es el juego que más te gusta?</p>
@@ -224,7 +222,7 @@ if ($_POST)
 		<!-- Pregunta 5 -->
 		<div class="step-content" data-step="2">
 			<div class="fields">
-				<p>¿Qué tipos de juegos te gusta más? Donde 1 es el que más te gusta</p>
+				<p>¿Qué tipos de juegos te gusta más? Ordena, poniendo hasta arriba el que más te gusta</p>
 				<div class="group">
 
 					<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -237,11 +235,11 @@ if ($_POST)
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 					<ol id="sortable" class="ui-sortable collection">
-						<li id="task_1" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos de Rol</li>
-						<li id="task_2" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Party games o juegos familiares</li>
-						<li id="task_3" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Deck Builder/TCG</li>
-						<li id="task_4" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">War Games o juegos de miniaturas</li>
-						<li id="task_5" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos largos y con temática</li>
+						<li id="GP1" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos de Rol</li>
+						<li id="GP2" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Party games o juegos familiares</li>
+						<li id="GP3" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Deck Builder/TCG</li>
+						<li id="GP4" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">War Games o juegos de miniaturas</li>
+						<li id="GP5" class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3">Juegos largos y con temática</li>
 					</ol>
 					<input type="hidden" name="position" id="position" />
 				</div>
@@ -273,17 +271,17 @@ if ($_POST)
 				</div>
 
 				<!-- Pregunta 7 -->
-				<p>¿Con qué descipción te identificas más?</p>
+				<p>¿Con qué descipción te identificas más? Ordena, poniendo hasta arriba con la que más te identificas</p>
 				<div class="group">
 
 
 					<ol id="sortable2" style="text-align: justify" class="ui-sortable collection">
-						<li id="task_6" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
-						<li id="task_7" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
-						<li id="task_8" class="ui-state-default">Prefiero juegos donde se forman equipos que compiten entre sí, ya sea para realizar tareas específicas o de roles secretos. Entre más jugadores mejor.</li>
-						<li id="task_9" class="ui-state-default">Mis juegos favoritos son juegos de tarjetas o de guerra donde se pueden utilizar miniaturas.</li>
-						<li id="task_10" class="ui-state-default">Las decisiones son muy importantes y puede llegar a ser muy competitivo.</li>
-						<li id="task_11" class="ui-state-default">Prefiero cualquier tipo de juego de rol donde puedo crear un personaje a mi elección y vivir muchas aventuras diferentes.</li>
+						<li id="Desc1" class="ui-state-default">Me gustan juego rápidos y sencillos, donde lo más importante es pasarlo bien con mis amigos o familiares.</li>
+						<li id="Desc2" class="ui-state-default">Me gustan los juegos con donde cada jugador lleva su propio juego, pero al final compite por la puntuación más alta.</li>
+						<li id="Desc3" class="ui-state-default">Prefiero juegos donde se forman equipos que compiten entre sí, ya sea para realizar tareas específicas o de roles secretos. Entre más jugadores mejor.</li>
+						<li id="Desc4" class="ui-state-default">Mis juegos favoritos son juegos de tarjetas o de guerra donde se pueden utilizar miniaturas.</li>
+						<li id="Desc5" class="ui-state-default">Las decisiones son muy importantes y puede llegar a ser muy competitivo.</li>
+						<li id="Desc6" class="ui-state-default">Prefiero cualquier tipo de juego de rol donde puedo crear un personaje a mi elección y vivir muchas aventuras diferentes.</li>
 					</ol>
 					<input type="hidden" name="position2" id="position2" />
 				</div>
@@ -301,7 +299,10 @@ if ($_POST)
 		<!-- Pregunta 8 -->
 		<div class="step-content" data-step="3">
 			<div class="fields">
-				<p>¿Cuáles son tus platillos favoritos de CnD?</p>
+				<p>En esta sección para cada pregunta puedes escoger hasta 3 elementos, los que más te gusten de cada lista. Aprieta agregar y por último, ordena estos 3 elementos, siempre poniendo hasta arriba tu favorito</p>
+
+
+				<p>¿Cuáles son tus platillos favoritos de C&D?</p>
 				<div class="group">
 					<ul class="foodchecks" id="platillos_1">
 						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Plat1"><label for="check6">
@@ -344,9 +345,11 @@ if ($_POST)
 							Pizza
 						</label></li>	
 					</ul>
-					<a href="#" id="add"  style="text-align: center;">Agregar</a>
+					<div class="buttons" style="text-align: center;">
+						<a href="#" id="add" class="btn alt" style="text-align: center;">Agregar</a>
+						<a href="#" id="remove" class="btn" style="text-align: center;" >Quitar</a>
+					</div>
 
-					<a href="#" id="remove" style="text-align: center;" >Quitar</a>
 
 					<ol class="ui-sortable collection" style="display:inline-block;" id="platillos_2" style="text-align: justify">
 
@@ -373,58 +376,60 @@ if ($_POST)
 
 
 				<!-- Pregunta 9 -->
-				<p>¿Cuáles son tus bebidas favoritas de CnD?</p>
+				<p>¿Cuáles son tus bebidas favoritas de C&D?</p>
 				<div class="group">
 					<ul class="foodchecks" id="bebidas_1">
-						<li><label for="check14">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb1"><label for="check14">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check14" value="Sodas italianas" >
 							Sodas italianas (varios sabores) o bebida mineralizada (mangada, limonada, naranjada)
 						</label> </li>
 						<p></p>
 						<p></p>
-						<li><label for="check15">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb2"><label for="check15">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check15" value="Sangre goblin">
 							Sangre goblin (jugo de uva arándano)
 						</label></li>
 						<p></p>
-						<li><label for="check16">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb3"><label for="check16">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check16" value="Flotantes">
 							Flotantes (varios sabores) o chamoyada
 						</label></li>
 						<p>	</p>	
-						<li><label for="check17">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb4"><label for="check17">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check17" value="Malteadas">
 							Malteadas
 						</label></li>
 						<p></p>
-						<li><label for="check18">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb5"><label for="check18">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check18" value="Café">
 							Café o capuchino
 						</label></li>
 						<p></p>
-						<li><label for="check19">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb6"><label for="check19">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check19" value="Cervezas Arte">
 							Cervezas artesanales
 						</label></li>
 						<p></p>
-						<li><label for="check20">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb7"><label for="check20">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check20" value="Cervezas Comer">
 							Cervezas comerciales
 						</label>	</li>
 						<p>	</p>
-						<li><label for="check21">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="Fav_Beb8"><label for="check21">
 							<input type="checkbox" name="Bebidas_Preferidas[]" id="check21" value="Refrescos">
 							Refrescos (varios sabores)
 						</label></li>	
 					</ul>
 
-					<a href="#" id="add2"  style="text-align: center;">Agregar</a>
+					<div class="buttons" style="text-align: center;">
+						<a href="#" id="add2" class="btn alt" style="text-align: center;">Agregar</a>
+						<a href="#" id="remove2" class="btn" style="text-align: center;" >Quitar</a>
+					</div>
 
-					<a href="#" id="remove2" style="text-align: center;" >Quitar</a>
+					<ol class="ui-sortable collection" style="display:inline-block;" id="bebidas_2">
 
-					<ul class="foodchecks" style="display:inline-block;" id="bebidas_2">
-
-					</ul>
+					</ol>
+					<input type="hidden" name="position4" id="position4"/>
 
 					<script>
 						$('#add2').click(function() {
@@ -440,47 +445,68 @@ if ($_POST)
 				<!-- Pregunta  10-->
 				<p>¿Qué te gustaría que agregáramos al menú?</p>
 				<div class="group">
-					<ul class="foodchecks">
-						<li><label for="check22">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check22" value="Rol">
+					<ul class="foodchecks" id="ComSug1">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug1"><label for="check22">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check22" value="chapatas">
 							Más opciones de chapatas
 						</label></li>
 						<p></p>
-						<li><label for="check23">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check23" value="Deck">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug2"><label for="check23">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check23" value="Hamburguesas">
 							Hamburguesas de pollo o club sándwich
 						</label></li>
 						<p></p>
-						<li><label for="check24">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check24" value="War">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug3"><label for="check24">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check24" value="botana">
 							Más opciones de botana (dedos de queso, aros de cebolla, etc.)
 						</label></li>
 						<p>	</p>
-						<li><label for="check25">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check25" value="Estrategia">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug4"><label for="check25">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check25" value="vegetales">
 							Ensaladas o platillos con vegetales
 						</label></li>
 						<p></p>
-						<li><label for="check26">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check26" value="Rol">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug5"><label for="check26">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check26" value="Agua/bebida">
 							Agua/bebida del día
 						</label></li>
 						<p></p>
-						<li><label for="check27">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check27" value="Deck">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug6"><label for="check27">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check27" value="italianas">
 							Más sabores de sodas italianas
 						</label></li>
 						<p></p>
-						<li><label for="check28">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check28" value="War">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug7"><label for="check28">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check28" value="refrescos">
 							Más opciones de refrescos
 						</label>	</li>	
 						<p></p>
-						<li><label for="check29">
-							<input type="checkbox" name="Platillos_Sugerencias[]" id="check29" value="Estrategia">
+						<li class="ui-state-default ui-sortable-handle collection-item avatar z-depth-3" id="PlSug8"><label for="check29">
+							<input type="checkbox" name="Platillos_Sugerencias[]" id="check29" value="salsas">
 							Más opciones de salsas y aderezos para acompañar los platillos
 						</label></li>	
-					</ul>																
+					</ul>
+
+					<div class="buttons" style="text-align: center;">
+						<a href="#" id="add3" class="btn alt" style="text-align: center;">Agregar</a>
+						<a href="#" id="remove3" class="btn" style="text-align: center;" >Quitar</a>
+					</div>
+
+					<ol class="ui-sortable collection" style="display:inline-block;" id="ComSug2">
+
+					</ol>
+					<input type="hidden" name="position5" id="position5"/>
+
+					<script>
+						$('#add3').click(function() {
+							return !$('#ComSug1 li :checked').closest('li').appendTo('#ComSug2');
+						});
+						$('#remove3').click(function() {
+							return !$('#ComSug2 li :checked').closest('li').appendTo('#ComSug1');
+						});
+
+					</script>
+
 					<div class="buttons">
 						<a href="#" class="btn alt" data-set-step="2">Anterior</a>
 						<a href="#" class="btn" data-set-step="4">Siguiente</a>
@@ -493,9 +519,9 @@ if ($_POST)
 		<div class="step-content" data-step="4">
 			<div class="fields">
 				<!-- Pregunta  9-->
-				<p>¿Qué tan probable es que recomiendes CnD a tus amigos?</p>
+				<p>¿Qué tan probable es que recomiendes C&D a tus amigos?</p>
 				<div class="rating">
-					<input type="radio" name="Recommendar" id="radio10" value="0">
+					<input type="radio" name="Recommendar" id="radio10" value="0" required>
 					<label for="radio10">1</label>
 					<input type="radio" name="Recommendar" id="radio11" value="1">
 					<label for="radio11">2</label>
@@ -510,7 +536,7 @@ if ($_POST)
 					<span>No, gracias</span>
 					<span>Me encanta, lo amo</span>
 				</div>
-				<p>¿En general, ¿Qué tan satisfecho estás con los servicios que ofrece CnD?</p>
+				<p>¿En general, ¿Qué tan satisfecho estás con los servicios que ofrece C&D?</p>
 				<div class="group">
 
 					<label for="radio15">
@@ -613,7 +639,7 @@ if ($_POST)
 				</ul>
 			</div>
 
-			<p>Máxmio nivel escolar</p>
+			<p>Máximo nivel escolar</p>
 			<div class="group">
 				<label for="radio28">
 					<input type="radio" name="NEstudios" id="radio28" value="SinE" required >
@@ -763,6 +789,41 @@ if ($_POST)
 		});
 	});
 </script>
+
+<script>
+	$(function() {
+		var $sortable = $("#bebidas_2").sortable({
+			update: function(event, ui) {
+				var $data = $(this).sortable('toArray');
+				$("#position4").val(JSON.stringify($data));
+			}
+		});
+		$sortable.disableSelection();
+		$("#position4").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#frmExample").submit(function(e) {
+			e.preventDefault();
+			console.log("Form Submit, position4:", $("#position4").val());
+		});
+	});
+</script>
+
+<script>
+	$(function() {
+		var $sortable = $("#ComSug2").sortable({
+			update: function(event, ui) {
+				var $data = $(this).sortable('toArray');
+				$("#position5").val(JSON.stringify($data));
+			}
+		});
+		$sortable.disableSelection();
+		$("#position5").val(JSON.stringify($sortable.sortable("toArray")));
+		$("#frmExample").submit(function(e) {
+			e.preventDefault();
+			console.log("Form Submit, position5:", $("#position5").val());
+		});
+	});
+</script>
+
 
 <script>
 	$('input[type=checkbox]').on('change', function (e) {

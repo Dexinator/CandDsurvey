@@ -330,3 +330,7 @@ h1 i {
   text-align: center;
  margin: 0;
 }
+.survey-form .group input [type="range"{
+    color: transparent;
+}
+

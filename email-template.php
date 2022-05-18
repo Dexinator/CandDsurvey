@@ -64,20 +64,16 @@ Pregunta 18 ->CP
 	<td style="text-align:right;"><?=htmlspecialchars($position2, ENT_QUOTES)?></td>
 </tr>
 <tr>
-	<td style="padding:15px 0;text-decoration:underline;">Platillos_Preferidos</td>
-	<td style="text-align:right;"><?=htmlspecialchars($Platillos_Preferidos, ENT_QUOTES)?></td>
-</tr>
-<tr>
 	<td style="padding:15px 0;text-decoration:underline;">position3</td>
 	<td style="text-align:right;"><?=htmlspecialchars($position3, ENT_QUOTES)?></td>
 </tr>
 <tr>
-	<td style="padding:15px 0;text-decoration:underline;">Bebidas_Preferidas</td>
-	<td style="text-align:right;"><?=htmlspecialchars($Bebidas_Preferidas, ENT_QUOTES)?></td>
+	<td style="padding:15px 0;text-decoration:underline;">position4</td>
+	<td style="text-align:right;"><?=htmlspecialchars($position4, ENT_QUOTES)?></td>
 </tr>
 <tr>
-	<td style="padding:15px 0;text-decoration:underline;">Platillos_Sugerencias</td>
-	<td style="text-align:right;"><?=htmlspecialchars($Platillos_Sugerencias, ENT_QUOTES)?></td>
+	<td style="padding:15px 0;text-decoration:underline;">position5</td>
+	<td style="text-align:right;"><?=htmlspecialchars($position5, ENT_QUOTES)?></td>
 </tr>
 <tr>
 	<td style="padding:15px 0;text-decoration:underline;">Recommendar</td>
